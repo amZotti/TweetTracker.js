@@ -1,8 +1,8 @@
+var Tweet = require('./dbClient.js').Tweet;
 var Twitter = require('twitter');
 var APIkeys = require('./APIkeys.js');
-var dbClient = require('dbClient');
 var SF = '-122.75,36.8,-121.75,37.8';
-var keywords = [/javascript/, /ruby/, /san/];
+var keywords = [/javascript/, /ruby/, /san/, /the/];
 
 var TwitterClient = new Twitter({
   consumer_key: APIkeys.CONSUMER_KEY,
@@ -12,13 +12,16 @@ var TwitterClient = new Twitter({
 });
 
 TwitterClient.stream('statuses/filter', {locations: SF}, function(stream) {
+  console.log("Listening for tweets...");
   stream.on('data', function(tweet) {
-    if (tweetContainsKeywords(tweet))
-      console.log(tweet.text);
+    if (tweetContainsKeywords(tweet)) {
+      Tweet.create({city: "SF", text: tweet.text, keyword: 'test'});
+      console.log("Persisting tweet: " + tweet.text);
+    }
   });
  
   stream.on('error', function(error) {
-    throw error;
+    console.log("error: " + error);
   });
 });
 
