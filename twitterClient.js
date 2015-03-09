@@ -1,5 +1,6 @@
 var Twitter = require('twitter');
 var APIkeys = require('./APIkeys.js');
+var dbClient = require('dbClient');
 var SF = '-122.75,36.8,-121.75,37.8';
 var keywords = [/javascript/, /ruby/, /san/];
 
@@ -28,3 +29,4 @@ function tweetContainsKeywords(tweet) {
   }
   return false;
 }
+
