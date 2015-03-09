@@ -1,0 +1,75 @@
+{
+  "name": "twitter",
+  "version": "1.2.3",
+  "description": "Twitter API client library for node.js",
+  "keywords": [
+    "twitter",
+    "streaming",
+    "oauth"
+  ],
+  "homepage": "https://github.com/desmondmorris/node-twitter",
+  "author": {
+    "name": "Desmond Morris",
+    "email": "hi@desmondmorris.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/desmondmorris/node-twitter"
+  },
+  "scripts": {
+    "test": "npm run lint && mocha",
+    "lint": "jshint test/*.js lib/*.js && echo Lint passed."
+  },
+  "dependencies": {
+    "deep-extend": "^0.3.2",
+    "request": "^2.51.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0",
+    "mocha": "^2.1.0",
+    "nock": "^0.57.0"
+  },
+  "main": "./lib/twitter",
+  "jshintConfig": {
+    "boss": true,
+    "node": true,
+    "strict": true,
+    "newcap": false,
+    "undef": true,
+    "unused": true,
+    "onecase": true,
+    "lastsemic": true,
+    "indent": 2,
+    "globals": {
+      "escape": true,
+      "describe": true,
+      "it": true,
+      "before": true
+    }
+  },
+  "gitHead": "1e9dc14cbd9064c44424cc456ecca19985cbc018",
+  "bugs": {
+    "url": "https://github.com/desmondmorris/node-twitter/issues"
+  },
+  "_id": "twitter@1.2.3",
+  "_shasum": "9ab957722de8320e4f391e880a9c493167bebf0b",
+  "_from": "twitter@*",
+  "_npmVersion": "2.6.1",
+  "_nodeVersion": "0.10.36",
+  "_npmUser": {
+    "name": "desmondmorris",
+    "email": "hi@desmondmorris.com"
+  },
+  "maintainers": [
+    {
+      "name": "desmondmorris",
+      "email": "hi@desmondmorris.com"
+    }
+  ],
+  "dist": {
+    "shasum": "9ab957722de8320e4f391e880a9c493167bebf0b",
+    "tarball": "http://registry.npmjs.org/twitter/-/twitter-1.2.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/twitter/-/twitter-1.2.3.tgz"
+}
