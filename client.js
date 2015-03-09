@@ -1,6 +1,7 @@
 var Twitter = require('twitter');
 var APIkeys = require('./APIkeys.js');
 var SF = '-122.75,36.8,-121.75,37.8';
+var keywords = [/javascript/, /ruby/, /san/];
 
 var client = new Twitter({
   consumer_key: APIkeys.CONSUMER_KEY,
@@ -11,10 +12,19 @@ var client = new Twitter({
 
 client.stream('statuses/filter', {locations: SF}, function(stream) {
   stream.on('data', function(tweet) {
-    console.log(tweet.text);
+    if (tweetContainsKeywords(tweet))
+      console.log(tweet.text);
   });
  
   stream.on('error', function(error) {
     throw error;
   });
 });
+
+function tweetContainsKeywords(tweet) {
+  for (var i = 0;i < keywords.length;i++) {
+    if (keywords[i].test(tweet.text))
+      return true;
+  }
+  return false;
+}
