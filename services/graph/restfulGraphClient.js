@@ -10,7 +10,14 @@ function graphTweets(city, keyword) {
   Tweet.find({city: city, keyword: keyword}, function(err, tweet) {
     var tweetData = filterTweetData(tweet, keyword);
     var data = [{x: tweetData[0], y: tweetData[1], type: 'scatter'}];
-    var graphOptions = {filename: "date-axes"};
+    var graphOptions = {
+      "filename": "TweetTracker", 
+      "fileopt": "overwrite", 
+      "layout": {
+        "title": "streaming twitter data"
+      },
+      "world_readable": true
+    };
 
     plotly.plot(data, graphOptions, function (err, msg) {
       if (err) return console.log(err);
