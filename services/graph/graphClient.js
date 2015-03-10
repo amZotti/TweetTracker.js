@@ -1,12 +1,15 @@
 var Tweet = require("../db/dbClient.js").Tweet;
 var keys = require("./APIkeys.js");
 var plotly = require('plotly')(keys.username, keys.password);
-var city = "San Francisco";
 
-function graphTweets() {
-  Tweet.find({city: city}, function(err, tweet) {
-    var data = [{x: getTweetTimes(tweet), y: getTweetKeywords(tweet), type: 'scatter'}];
-    console.log(data);
+//Graph generation filters
+var city = "San Francisco";
+var keyword = "the";
+
+function graphTweets(city, keyword) {
+  Tweet.find({city: city, keyword: keyword}, function(err, tweet) {
+    var tweetData = filterTweetData(tweet, keyword);
+    var data = [{x: tweetData[0], y: tweetData[1], type: 'scatter'}];
     var graphOptions = {filename: "date-axes"};
 
     plotly.plot(data, graphOptions, function (err, msg) {
@@ -16,19 +19,14 @@ function graphTweets() {
   });
 }
 
-function getTweetTimes(tweet) {
-  var result = [];
+function filterTweetData(tweet, keyword) {
+  var times = [];
+  var counts = [];
   for (var i = 0;i < tweet.length;i++) {
-    result.push(tweet[i].createdAt);
+    times.push(tweet[i].createdAt);
+    counts.push(i);
   }
-  return result;
+  return [times, counts];
 }
 
-function getTweetKeywords(tweet) {
-  var result = [];
-  for (var i = 0;i < tweet.length;i++) {
-    result.push(tweet[i].keyword);
-  }
-  return result;
-}
-graphTweets();
+graphTweets(city, keyword);
