@@ -19,7 +19,7 @@ router.get("/api/data", function(req, res) {
 });
 
 router.post("/api/keyword", function(req, res) {
-  var keyword = req.body.keyword;
+  keyword = req.body.keyword;
   grapher.graphTweets(keyword);
 });
 
