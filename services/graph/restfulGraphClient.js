@@ -4,7 +4,7 @@ var plotly = require('plotly')(keys.username, keys.password);
 
 //Graph generation filters
 var city = "San Francisco";
-var keyword = "the";
+var keyword = "facebook";
 
 function graphTweets(city, keyword) {
   Tweet.find({city: city, keyword: keyword}, function(err, tweet) {
@@ -58,4 +58,8 @@ function roundMinutes(date) {
   return date;
 }
 
-graphTweets(city, keyword);
+module.exports = {
+  graphTweets: function() {
+  graphTweets(city, keyword);
+  }
+};
