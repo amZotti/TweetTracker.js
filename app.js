@@ -57,4 +57,5 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+console.log("Starting Express...");
+app.listen(3000);
