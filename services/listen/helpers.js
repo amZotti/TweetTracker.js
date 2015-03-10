@@ -13,3 +13,10 @@ module.exports.regexToString = function(regex) {
   return str.substring(1, str.length - 1);
 };
 
+module.exports.regexesToStrings = function(regexes) {
+  var result = [];
+  for (var i = 0;i < regexes.length;i++) {
+    result.push(this.regexToString(regexes[i]));
+  }
+  return result;
+}
