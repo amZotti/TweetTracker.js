@@ -56,6 +56,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-console.log("Starting Express...");
-app.listen(3000);
+var PORT = 3000;
+console.log("Starting Express on port " + PORT);
+app.listen(PORT);
