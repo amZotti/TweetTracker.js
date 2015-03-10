@@ -8,10 +8,12 @@ body(ng-app="app").
       </a>
       <script data-plotly="azotti:79" src="https://plot.ly/embed.js" async></script>
     </div>
+    <div id="graph-info">
+      <h2>Current City:</h2> {{ city }}
+      <h2>Current Keyword:</h2> {{ keyword }}
+    </div>
     <h2>Keywords</h2>
     <ul>
       <li ng-repeat="k in keywords"><a href="#" ng-click="displayNewGraph(k)">{{ k }}</a></li>
     </ul>
-    <h2>Current City: {{ city }}</h2>
-    <h2>Current Keyword: {{ keyword }}</h2>
   </main>
