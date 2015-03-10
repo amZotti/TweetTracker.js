@@ -1,4 +1,4 @@
-var Tweet = require("./dbClient.js").Tweet;
+var Tweet = require("../db/dbClient.js").Tweet;
 var TwitterClient = require("./twitterClient.js").TwitterClient;
 var helper = require("./helpers.js");
 var city = {coords: "-122.75,36.8,-121.75,37.8", name: "San Francisco"};
