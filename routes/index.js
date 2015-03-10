@@ -7,10 +7,10 @@ var helper = require("../services/listen/helpers.js");
 var city = criteria.searchCity;
 var keyword = criteria.searchKeyword;
 var keywords = helper.regexesToStrings(criteria.detectKeywords);
+grapher.graphTweets();
 
 
 router.get("/", function(req, res, next) {
-  grapher.graphTweets();
   res.render("index", {});
 });
 
@@ -21,7 +21,6 @@ router.get("/api/data", function(req, res) {
 router.post("/api/keyword", function(req, res) {
   var keyword = req.body.keyword;
   grapher.graphTweets(keyword);
-  res.send();
 });
 
 module.exports = router;
