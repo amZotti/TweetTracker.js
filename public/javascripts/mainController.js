@@ -6,4 +6,14 @@ app.controller('mainController', function($scope, $http) {
     $scope.keyword = data.data.keyword;
     $scope.keywords = data.data.keywords;
   });
+
+  $scope.displayNewGraph = function(keyword) {
+    $http.post("/api/keyword", {keyword: keyword})
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function(data) {
+        console.log(data);
+      });
+  }
 });

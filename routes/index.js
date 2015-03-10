@@ -10,13 +10,18 @@ var keywords = helper.regexesToStrings(criteria.detectKeywords);
 
 
 router.get("/", function(req, res, next) {
-  console.log("Updating Graph: ");
   grapher.graphTweets();
   res.render("index", {});
 });
 
 router.get("/api/data", function(req, res) {
   res.send({city: city, keyword: keyword, keywords: keywords});
+});
+
+router.post("/api/keyword", function(req, res) {
+  var keyword = req.body.keyword;
+  grapher.graphTweets(keyword);
+  res.send();
 });
 
 module.exports = router;

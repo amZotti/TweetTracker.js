@@ -4,7 +4,7 @@ var plotly = require('plotly')(keys.username, keys.password);
 var search = require('../../tweetDetectionCriteria.js');
 
 var city = search.searchCity;
-var keyword = search.searchKeyword;
+var defaultKeyword = search.searchKeyword;
 
 function graphTweets(city, keyword) {
   Tweet.find({city: city, keyword: keyword}, function(err, tweet) {
@@ -60,7 +60,11 @@ function roundMinutes(date) {
 }
 
 module.exports = {
-  graphTweets: function() {
-  graphTweets(city, keyword);
+  graphTweets: function(keyword) {
+    if (keyword !== undefined) 
+      keyword = RegExp(keyword);
+    else 
+      keyword = defaultKeyword;
+    graphTweets(city, keyword);
   }
 };

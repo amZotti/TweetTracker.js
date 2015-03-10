@@ -10,7 +10,7 @@ body(ng-app="app").
     </div>
     <h2>Keywords</h2>
     <ul>
-      <li ng-repeat="k in keywords">{{ k }}</li>
+      <li ng-repeat="k in keywords"><a href="#" ng-click="displayNewGraph(k)">{{ k }}</a></li>
     </ul>
     <h2>Current City: {{ city }}</h2>
     <h2>Current Keyword: {{ keyword }}</h2>
