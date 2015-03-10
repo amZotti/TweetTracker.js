@@ -12,7 +12,7 @@ var keywords = helper.regexesToStrings(criteria.detectKeywords);
 router.get("/", function(req, res, next) {
   console.log("Updating Graph: ");
   grapher.graphTweets();
-  res.render("index", {city: city, keyword: keyword, keywords: keywords});
+  res.render("index", {});
 });
 
 router.get("/api/data", function(req, res) {

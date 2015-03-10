@@ -2,15 +2,16 @@ include layout.jade
 body(ng-app="app").
   <main ng-controller="mainController">
     <h1>Tweet Tracker</h1>
-    <a href="#" ng-click="getData()">get Data</a>
     <div>
       <a href="https://plot.ly/~azotti/79/" target="_blank" title="" style="display: block; text-align: center;">
       <img src="https://plot.ly/~azotti/79.png" alt="" style="max-width: 100%;"  onerror="this.onerror=null;this.src='https://plot.ly/404.png';" />
       </a>
       <script data-plotly="azotti:79" src="https://plot.ly/embed.js" async></script>
     </div>
+    <h2>Keywords</h2>
+    <ul>
+      <li ng-repeat="k in keywords">{{ k }}</li>
+    </ul>
+    <h2>Current City: {{ city }}</h2>
+    <h2>Current Keyword: {{ keyword }}</h2>
   </main>
-
-h2 City: #{city}
-h2 Search Keyword: #{keyword}
-h3 Keywords:
