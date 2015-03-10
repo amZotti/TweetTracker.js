@@ -1,15 +1,16 @@
 var Tweet = require("../db/dbClient.js").Tweet;
 var keys = require("./APIkeys.js");
 var plotly = require('plotly')(keys.username, keys.password);
+var search = require('../../tweetDetectionCriteria.js');
 
-//Graph generation filters
-var city = "San Francisco";
-var keyword = "facebook";
+var city = search.searchCity;
+var keyword = search.searchKeyword;
 
 function graphTweets(city, keyword) {
   Tweet.find({city: city, keyword: keyword}, function(err, tweet) {
     var tweetData = filterTweetData(tweet, keyword);
     var data = [{x: tweetData[0], y: tweetData[1], type: 'scatter'}];
+
     var graphOptions = {
       "filename": "TweetTracker", 
       "fileopt": "overwrite", 
