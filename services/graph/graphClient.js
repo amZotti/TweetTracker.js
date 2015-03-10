@@ -20,23 +20,27 @@ function graphTweets(city, keyword) {
 }
 
 function filterTweetData(tweet, keyword) {
-  var hourlyIntervals = [];
+  var minuteIntervals = [];
   var frequency = [];
-  var currentHour;
+  var currentMinute;
   var count = 0;
   for (var i = 0;i < tweet.length;i++) {
     var time = roundMinutes(tweet[i].createdAt);
     count++;
-    if (+time !== +currentHour) {
-      hourlyIntervals.push(time);
+    if (+time !== +currentMinute) {
+      minuteIntervals.push(formatDate(time));
       frequency.push(count);
 
       //reset
-      currentHour = time;;
+      currentMinute = time;;
       count = 0;
     }
   }
-  return [hourlyIntervals, frequency];
+  return [minuteIntervals, frequency];
+}
+
+function formatDate(date) {
+  return (date.getHours() + ":") + (" " + date.getMinutes());
 }
 
 function roundMinutes(date) {
