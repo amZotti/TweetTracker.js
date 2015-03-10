@@ -17,4 +17,4 @@ module.exports = {Tweet: Tweet};
 //Tweet.create({city: "SF", text: "LOL BBQ", keyword: "ruby"});
 
 //Retrieval
-//Tweet.find({city: "SF"}, function(err, tweet) {console.log(tweet)});
+//Tweet.find({city: "San Francisco"}, function(err, tweet) {console.log(tweet)});
